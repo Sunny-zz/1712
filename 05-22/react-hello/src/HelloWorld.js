@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Button from './Button'
 import styled from 'styled-components'
 class HelloWorld extends Component {
   state = {
@@ -38,6 +39,7 @@ class HelloWorld extends Component {
         </h1>
         <ul>{commentsList}</ul>
         <button onClick={this.handleClick}>按钮</button>
+        <Button />
       </Wrapper>
     )
   }
@@ -49,3 +51,4 @@ const Wrapper = styled.div`
 `
 // 因为 react 的行内样式 要写成 style = {} 形式 所以在 jsx 之中要写成 style ={{ color:'red' }}
 // npm install --save styled-components 安装这个包可以将组件的样式私有
+// 组件页面渲染发生改变 修改 state  或 修改 props
