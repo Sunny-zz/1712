@@ -18,7 +18,14 @@ class Home extends Component {
     const { posts } = this.state
     const postList = posts.map(post => (
       <li key={post.id}>
-        <Link to={`/post/${post.id}`}>{post.title}</Link>
+        <Link
+          to={{
+            pathname: `/post/${post.id}`,
+            state: post.title
+          }}
+        >
+          {post.title}
+        </Link>
       </li>
     ))
     const content =

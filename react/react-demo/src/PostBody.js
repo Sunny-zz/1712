@@ -3,7 +3,8 @@ import styled from 'styled-components'
 
 class PostBody extends Component {
   render() {
-    return <Wrapper>postbody</Wrapper>
+    const { title } = this.props
+    return <Wrapper>{title}</Wrapper>
   }
 }
 
