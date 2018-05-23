@@ -19,8 +19,23 @@ class PostComments extends Component {
     this.setState({
       text: event.target.value
     })
-    console.log(this.state.text)
+    // 修改state 为什么页面会改变 因为 state 变组件重新渲染 也就是 render 方法重新执行
+
     // react 表单要写成受控组件  第一： 将表单变化的东西写成 state 第二： 使用 onChang 事件修改 state ，修改成 event.target.value
+  }
+  addComment = () => {
+    if (this.state.text.trim()) {
+      const { comments, text } = this.state
+      const comment = {
+        id: comments.length + 1,
+        body: text
+      }
+      // react  state 的不变性
+      this.setState({
+        comments: [...comments, comment],
+        text: ''
+      })
+    }
   }
   render() {
     const commentsList = this.state.comments.map(comment => (
@@ -33,8 +48,8 @@ class PostComments extends Component {
           value={this.state.text}
           onChange={this.handleCommit}
         />
-        <button>评论</button>
-        <ul>{commentsList}</ul>
+        <button onClick={this.addComment}>评论</button>
+        <ul>{commentsList.reverse()}</ul>
       </Wrapper>
     )
   }
