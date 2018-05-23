@@ -28,14 +28,18 @@ class PostComments extends Component {
   addComment = () => {
     if (this.state.text.trim()) {
       const { comments, text } = this.state
+      const { postId } = this.props
       const comment = {
-        id: comments.length + 1,
-        body: text
+        body: text,
+        postId: postId
       }
       // react  state 的不变性
-      this.setState({
-        comments: [...comments, comment],
-        text: ''
+      const uri = 'http://localhost:3008/comments'
+      axios.post(uri, comment).then(res => {
+        this.setState({
+          comments: [...comments, res.data],
+          text: ''
+        })
       })
     }
   }
