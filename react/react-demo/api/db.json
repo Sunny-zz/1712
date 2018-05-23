@@ -1,0 +1,22 @@
+{
+  "comments": [
+    {
+      "id": 1,
+      "body": "hahaha"
+    },
+    {
+      "id": 1,
+      "body": "aaaa"
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "git 基础操作"
+    },
+    {
+      "id": 2,
+      "title": "react 基础知识"
+    }
+  ]
+}
