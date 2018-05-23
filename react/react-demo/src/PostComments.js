@@ -19,6 +19,7 @@ class PostComments extends Component {
     this.setState({
       text: event.target.value
     })
+    console.log(this.state.text)
     // react 表单要写成受控组件  第一： 将表单变化的东西写成 state 第二： 使用 onChang 事件修改 state ，修改成 event.target.value
   }
   render() {
