@@ -2,11 +2,18 @@
   "comments": [
     {
       "id": 1,
-      "body": "hahaha"
+      "body": "git 很实用",
+      "postId": 1
     },
     {
-      "id": 1,
-      "body": "aaaa"
+      "id": 2,
+      "body": "react very nice",
+      "postId": 2
+    },
+    {
+      "id": 3,
+      "body": "vue 用起来很方便",
+      "postId": 3
     }
   ],
   "posts": [
@@ -20,7 +27,7 @@
     },
     {
       "id": 3,
-      "title": "react1 基础知识"
+      "title": "vue 基础知识"
     }
   ]
 }

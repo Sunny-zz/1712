@@ -1,25 +1,27 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import axios from 'axios'
 class PostComments extends Component {
   state = {
-    comments: [
-      {
-        id: 1,
-        body: 'vue 真的很不错'
-      },
-      {
-        id: 2,
-        body: 'react 也很不错'
-      }
-    ],
+    comments: [],
     text: ''
   }
+  componentDidMount() {
+    const uri = 'http://localhost:3008/comments'
+    const { postId } = this.props
+    axios.get(uri).then(res => {
+      this.setState({
+        comments: res.data.filter(commet => commet.postId.toString() === postId)
+      })
+    })
+  }
+
   handleCommit = event => {
     // 修改 state 是一个异步操作
     this.setState({
       text: event.target.value
     })
-    // 修改state 为什么页面会改变 因为 state 变组件重新渲染 也就是 render 方法重新执行
+    // 修改 state 为什么页面会改变 因为 state 变组件重新渲染 也就是 render 方法重新执行
 
     // react 表单要写成受控组件  第一： 将表单变化的东西写成 state 第二： 使用 onChang 事件修改 state ，修改成 event.target.value
   }
