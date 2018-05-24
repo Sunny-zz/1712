@@ -3,17 +3,7 @@ import styled from 'styled-components'
 import axios from 'axios'
 class PostComments extends Component {
   state = {
-    comments: [],
     text: ''
-  }
-  componentDidMount() {
-    const uri = 'http://localhost:3008/comments'
-    const { postId } = this.props
-    axios.get(uri).then(res => {
-      this.setState({
-        comments: res.data.filter(commet => commet.postId.toString() === postId)
-      })
-    })
   }
 
   handleCommit = event => {
@@ -44,7 +34,7 @@ class PostComments extends Component {
     }
   }
   render() {
-    const commentsList = this.state.comments.map(comment => (
+    const commentsList = this.props.comments.map(comment => (
       <li key={comment.id}>{comment.body}</li>
     ))
     return (

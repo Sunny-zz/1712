@@ -4,7 +4,12 @@ import styled from 'styled-components'
 class PostBody extends Component {
   render() {
     const { title } = this.props
-    return <Wrapper>{title}</Wrapper>
+    return (
+      <Wrapper>
+        {title}
+        <Number>2 评论</Number>
+      </Wrapper>
+    )
   }
 }
 
@@ -17,8 +22,10 @@ const Wrapper = styled.div`
   border: 1px solid #ccc;
   margin: 50px auto;
   text-align: center;
-  line-height: 200px;
-  &:hover {
-    color: red;
-  }
+  position: relative;
+`
+const Number = styled.span`
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
 `
