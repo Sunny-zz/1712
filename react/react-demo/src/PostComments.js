@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import axios from 'axios'
 class PostComments extends Component {
   state = {
     text: ''
@@ -16,20 +15,11 @@ class PostComments extends Component {
     // react 表单要写成受控组件  第一： 将表单变化的东西写成 state 第二： 使用 onChang 事件修改 state ，修改成 event.target.value
   }
   addComment = () => {
-    if (this.state.text.trim()) {
-      const { comments, text } = this.state
-      const { postId } = this.props
-      const comment = {
-        body: text,
-        postId: postId
-      }
-      // react  state 的不变性
-      const uri = 'http://localhost:3008/comments'
-      axios.post(uri, comment).then(res => {
-        this.setState({
-          comments: [...comments, res.data],
-          text: ''
-        })
+    const { text } = this.state
+    if (text.trim()) {
+      this.props.addComment(text)
+      this.setState({
+        text: ''
       })
     }
   }

@@ -3,11 +3,11 @@ import styled from 'styled-components'
 
 class PostBody extends Component {
   render() {
-    const { title } = this.props
+    const { title, number } = this.props
     return (
       <Wrapper>
         {title}
-        <Number>2 评论</Number>
+        <Number>{number} 评论</Number>
       </Wrapper>
     )
   }
