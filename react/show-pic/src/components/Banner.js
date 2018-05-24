@@ -36,15 +36,19 @@ class Banner extends Component {
     })
   }
   render() {
-    const { pic } = this.state
+    const { pic, show } = this.state
     const imgWidth = 100 / pic.length + '%'
     const picWidth = pic.length * 100 + '%'
-    const ml = this.state.show * -100 + '%'
+    const ml = show * -100 + '%'
     const showPic = pic.map(pic => (
       <img style={{ width: imgWidth }} src={pic.src} alt="" key={pic.id} />
     ))
     const buttonList = pic.map((pic, index) => (
-      <Button key={pic.id} onClick={() => this.handleClick(index)} />
+      <Button
+        style={{ backgroundColor: show === index ? '#00b3d4' : '#f1f8f9' }}
+        key={pic.id}
+        onClick={() => this.handleClick(index)}
+      />
     ))
     return (
       <Show>
@@ -85,7 +89,6 @@ const List = styled.ul`
 const Button = styled.li`
   width: 25px;
   height: 25px;
-  background-color: #f1f8f9;
   opacity: 0.6;
   border-radius: 50%;
   cursor: pointer;
