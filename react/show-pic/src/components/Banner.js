@@ -22,18 +22,31 @@ class Banner extends Component {
       {
         id: 4,
         src: forthPic
+      },
+      {
+        id: 5,
+        src: forthPic
       }
     ]
   }
   render() {
     const { pic } = this.state
-    const showPic = pic.map(pic => <img src={pic.src} alt="" key={pic.id} />)
+    const imgWidth = 100 / pic.length + '%'
+    const picWidth = pic.length * 100 + '%'
+    const showPic = pic.map(pic => (
+      <img style={{ width: imgWidth }} src={pic.src} alt="" key={pic.id} />
+    ))
     return (
-      <div>
-        <div>{showPic}</div>
-      </div>
+      <Show>
+        <div style={{ width: picWidth }}>{showPic}</div>
+      </Show>
     )
   }
 }
 
 export default Banner
+const Show = styled.div`
+  width: 80%;
+  margin: 100px auto;
+  overflow: hidden;
+`
