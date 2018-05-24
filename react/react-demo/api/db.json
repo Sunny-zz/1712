@@ -1,11 +1,6 @@
 {
   "comments": [
     {
-      "id": 1,
-      "body": "git 很实用",
-      "postId": 1
-    },
-    {
       "id": 2,
       "body": "react very nice",
       "postId": 2
@@ -24,16 +19,6 @@
       "body": "22222222222222",
       "postId": "3",
       "id": 5
-    },
-    {
-      "body": "22222",
-      "postId": "1",
-      "id": 6
-    },
-    {
-      "body": "222222222",
-      "postId": "1",
-      "id": 7
     }
   ],
   "posts": [

@@ -27,6 +27,15 @@ class Post extends Component {
       })
     })
   }
+  deleteComment = id => {
+    const uri = `http://localhost:3008/comments/${id}`
+    const { comments } = this.state
+    axios.delete(uri).then(res => {
+      this.setState({
+        comments: [...comments].filter(t => t.id !== id)
+      })
+    })
+  }
   render() {
     // console.log(this.props.match.params.id)
     // console.log(this.props.location.state)
@@ -37,7 +46,11 @@ class Post extends Component {
     return (
       <div>
         <PostBody title={title} number={comments.length} />
-        <PostComments comments={comments} addComment={this.addComment} />
+        <PostComments
+          comments={comments}
+          addComment={this.addComment}
+          deleteComment={this.deleteComment}
+        />
       </div>
     )
   }

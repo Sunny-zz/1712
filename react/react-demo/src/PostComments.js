@@ -23,9 +23,16 @@ class PostComments extends Component {
       })
     }
   }
+  deleteComment = id => {
+    this.props.deleteComment(id)
+  }
+  // react 事件传递参数 要将调用事件传递参数 写在一个 箭头函数内 当做事件函数
   render() {
     const commentsList = this.props.comments.map(comment => (
-      <li key={comment.id}>{comment.body}</li>
+      <li key={comment.id}>
+        {comment.body}
+        <button onClick={() => this.deleteComment(comment.id)}>删除</button>
+      </li>
     ))
     return (
       <Wrapper>
