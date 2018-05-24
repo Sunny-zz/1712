@@ -31,22 +31,29 @@ class Banner extends Component {
     show: 0
   }
   handleClick = ind => {
-    console.log(ind)
+    this.setState({
+      show: ind
+    })
   }
   render() {
     const { pic } = this.state
     const imgWidth = 100 / pic.length + '%'
     const picWidth = pic.length * 100 + '%'
+    const ml = this.state.show * -100 + '%'
     const showPic = pic.map(pic => (
       <img style={{ width: imgWidth }} src={pic.src} alt="" key={pic.id} />
     ))
     const buttonList = pic.map((pic, index) => (
-      <Button key={pic.id} onClick={this.handleClick} />
+      <Button key={pic.id} onClick={() => this.handleClick(index)} />
     ))
     return (
       <Show>
         <div
-          style={{ width: picWidth, transition: 'margin-left 0.75s linear' }}
+          style={{
+            width: picWidth,
+            transition: 'margin-left 0.75s linear',
+            marginLeft: ml
+          }}
         >
           {showPic}
         </div>
@@ -58,7 +65,7 @@ class Banner extends Component {
 
 export default Banner
 const Show = styled.div`
-  width: 80%;
+  width: 60%;
   margin: 100px auto;
   overflow: hidden;
   position: relative;
