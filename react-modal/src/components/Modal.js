@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import Button from './Button'
 import PropTypes from 'prop-types'
 class Modal extends Component {
   state = {
@@ -10,7 +11,7 @@ class Modal extends Component {
     const { title } = this.props
     return (
       <div>
-        <Button onClick={() => this.setState({ show: true })}>Open</Button>
+        <Button text="打开" click={() => this.setState({ show: true })} />
         <Wrapper
           onClick={() =>
             this.setState({
@@ -40,19 +41,7 @@ Modal.defaultProps = {
   title: '默认的标题'
 }
 export default Modal
-const Button = styled.button`
-  color: #fff;
-  background-color: #1890ff;
-  outline: 0;
-  line-height: 1.5;
-  text-align: center;
-  cursor: pointer;
-  padding: 0 15px;
-  font-size: 14px;
-  border-radius: 4px;
-  border: 0;
-  height: 32px;
-`
+
 const Wrapper = styled.div`
   position: absolute;
   width: 100%;
