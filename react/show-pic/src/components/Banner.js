@@ -35,6 +35,33 @@ class Banner extends Component {
       show: ind
     })
   }
+  handleChange = arrow => {
+    const { show, pic } = this.state
+    // 判断
+    if (arrow === 'left') {
+      this.setState({
+        show: show <= 0 ? pic.length - 1 : show - 1
+      })
+    } else {
+      this.setState({
+        show: show >= pic.length - 1 ? 0 : show + 1
+      })
+    }
+  }
+  // handleLeft = () => {
+  //   const { show, pic } = this.state
+  //   const newShow = show <= 0 ? pic.length - 1 : show - 1
+  //   this.setState({
+  //     show: newShow
+  //   })
+  // }
+  // handleRight = () => {
+  //   const { show, pic } = this.state
+  //   const newShow = show >= pic.length - 1 ? 0 : show + 1
+  //   this.setState({
+  //     show: newShow
+  //   })
+  // }
   render() {
     const { pic, show } = this.state
     const imgWidth = 100 / pic.length + '%'
@@ -43,6 +70,7 @@ class Banner extends Component {
     const showPic = pic.map(pic => (
       <img style={{ width: imgWidth }} src={pic.src} alt="" key={pic.id} />
     ))
+    console.log(show)
     const buttonList = pic.map((pic, index) => (
       <Button
         style={{ backgroundColor: show === index ? '#00b3d4' : '#f1f8f9' }}
@@ -62,6 +90,10 @@ class Banner extends Component {
           {showPic}
         </div>
         <List>{buttonList}</List>
+        <ArrowLeft onClick={() => this.handleChange('left')}>{'<'}</ArrowLeft>
+        <ArrowRight onClick={() => this.handleChange('right')}>
+          {'>'}
+        </ArrowRight>
       </Show>
     )
   }
@@ -92,4 +124,24 @@ const Button = styled.li`
   opacity: 0.6;
   border-radius: 50%;
   cursor: pointer;
+`
+const Arrow = styled.span`
+  width: 60px;
+  height: 80px;
+  background-color: rgb(0, 0, 0);
+  line-height: 80px;
+  position: absolute;
+  top: 50%;
+  margin-top: -40px;
+  text-align: center;
+  font-size: 50px;
+  color: #fff;
+  opacity: 0.5;
+  cursor: pointer;
+`
+const ArrowLeft = styled(Arrow)`
+  left: 20px;
+`
+const ArrowRight = styled(Arrow)`
+  right: 20px;
 `
