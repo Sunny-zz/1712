@@ -30,6 +30,15 @@ class Banner extends Component {
     ],
     show: 0
   }
+  componentDidMount() {
+    this.timerId = setInterval(() => {
+      // const { show, pic } = this.state
+      // this.setState({
+      //   show: show >= pic.length - 1 ? 0 : show + 1
+      // })
+      this.handleChange('right')
+    }, 1000)
+  }
   handleClick = ind => {
     this.setState({
       show: ind
@@ -47,6 +56,10 @@ class Banner extends Component {
         show: show >= pic.length - 1 ? 0 : show + 1
       })
     }
+  }
+  handleEnter = () => {
+    // 停止 setInterval
+    clearInterval(this.timerId)
   }
   // handleLeft = () => {
   //   const { show, pic } = this.state
@@ -79,7 +92,7 @@ class Banner extends Component {
       />
     ))
     return (
-      <Show>
+      <Show onMouseEnter={this.handleEnter}>
         <div
           style={{
             width: picWidth,
