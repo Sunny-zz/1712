@@ -28,6 +28,16 @@ class Modal extends Component {
             <ModalContent>
               <p>sdfh ksjgf ksjgf kh</p>
             </ModalContent>
+            <ModalFooter>
+              <Button
+                text="确定"
+                click={() =>
+                  this.setState({
+                    show: false
+                  })
+                }
+              />
+            </ModalFooter>
           </DivModal>
         </Wrapper>
       </div>
@@ -80,7 +90,13 @@ const Close = styled.span`
 
 const ModalContent = styled.div`
   padding: 10px;
+  border-bottom: 1px solid #e4dfdf;
   p {
     margin: 10px 0px;
   }
+`
+const ModalFooter = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
 `
