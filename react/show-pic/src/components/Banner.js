@@ -31,11 +31,15 @@ class Banner extends Component {
     show: 0
   }
   componentDidMount() {
+    // 组件内部只能定义方法 想要定义一个在组件内的全局变量 让组件内的所有方法都可以访问， 我们需要想下面一样使用 this.timerId 定义,这样这个 timerId 变量，组件内的任何方法都可以访问了。
+    this.timer()
+    // const { show, pic } = this.state
+    // this.setState({
+    //   show: show >= pic.length - 1 ? 0 : show + 1
+    // })
+  }
+  timer = () => {
     this.timerId = setInterval(() => {
-      // const { show, pic } = this.state
-      // this.setState({
-      //   show: show >= pic.length - 1 ? 0 : show + 1
-      // })
       this.handleChange('right')
     }, 1000)
   }
@@ -60,6 +64,9 @@ class Banner extends Component {
   handleEnter = () => {
     // 停止 setInterval
     clearInterval(this.timerId)
+  }
+  handleLeave = () => {
+    this.timer()
   }
   // handleLeft = () => {
   //   const { show, pic } = this.state
@@ -92,7 +99,7 @@ class Banner extends Component {
       />
     ))
     return (
-      <Show onMouseEnter={this.handleEnter}>
+      <Show onMouseEnter={this.handleEnter} onMouseLeave={this.handleLeave}>
         <div
           style={{
             width: picWidth,
